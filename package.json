@@ -1,0 +1,27 @@
+{
+  "name": "init",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "electron": "cross-env NODE_ENV=dev electron ./electron",
+    "electron:prod": "cross-env NODE_ENV=production electron ./electron",
+    "pack:pre": "npm run build && copy electron\\* dist\\ && mkdir dist\\static && copy electron\\static\\* dist\\static\\",
+    "pack:win": "electron-builder --project=dist -w -p never",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^6.0.1",
+    "ant-design-vue": "^2.2.8",
+    "vue": "^3.2.16"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "cross-env": "^7.0.3",
+    "electron": "^16.0.0",
+    "electron-builder": "^22.13.1",
+    "typescript": "^4.4.3",
+    "vite": "^2.6.4",
+    "vue-tsc": "^0.3.0"
+  }
+}

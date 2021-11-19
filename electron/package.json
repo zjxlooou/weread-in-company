@@ -1,0 +1,14 @@
+{
+  "name": "weread-in-company",
+  "version": "1.0.0",
+  "description": "Weread In Company",
+  "main": "e-main.js",
+  "author": "zjxlooou",
+  "build": {
+    "directories": {
+      "output": "build-apps",
+      "buildResources": "./"
+    },
+    "electronVersion": "16.0.0"
+  }
+}
