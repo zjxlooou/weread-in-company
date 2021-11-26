@@ -3,7 +3,7 @@
         <webview
             ref="webview"
             id="webview"
-            :src="srcUrl"
+            :src="initSrcUrl"
             :style="style"
             v-on:load-commit="hideScrollbar"
             scrolling="no"
@@ -13,6 +13,9 @@
 
 <script>
 export default {
+    props: {
+        'initSrcUrl': String
+    },
     data() {
         const windowHeight = document.documentElement.clientHeight;
         const heightTemp = windowHeight + 'px';
@@ -21,7 +24,6 @@ export default {
             height: heightTemp
         };
         return {
-            srcUrl: 'https://weread.qq.com/',
             style
         }
     },
@@ -35,7 +37,7 @@ export default {
     },
     methods: {
         hideScrollbar: function () {
-            var webview = document.getElementById("webview");
+            const webview = document.getElementById("webview");
             // webview.insertCSS("body{overflow-y:hidden;}"); // 这样不能滚动
             webview.insertCSS("::-webkit-scrollbar {display: none;}"); // 隐藏且可滚动
         }

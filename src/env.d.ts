@@ -10,5 +10,5 @@ declare module '*.vue' {
 declare interface Window {
   isElectron: boolean;
   ipcRenderer: any;
-  webFrame: any;
+  homeUrl: string;
 }

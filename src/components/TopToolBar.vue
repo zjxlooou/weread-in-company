@@ -15,8 +15,8 @@
             <ReloadOutlined :style="{ color: '#909399' }" />
           </template>
         </a-button>
-        <!-- 显示滑动条 -->
-        <slider-button />
+        <!-- 显示设置按钮 -->
+        <setting-button />
       </a-col>
       <!-- 在右边 -->
       <a-col :span="12" align="right">
@@ -43,7 +43,7 @@
   </a-affix>
 </template>
 <script>
-import SliderButton from './SliderButton.vue';
+import SettingButton from './SettingButton.vue';
 import { DragOutlined, ReloadOutlined, MinusOutlined, CloseOutlined, PushpinOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 
@@ -54,7 +54,7 @@ export default {
     MinusOutlined,
     CloseOutlined,
     PushpinOutlined,
-    SliderButton
+    SettingButton
   },
   data() {
     let clientWidth = (document.body.clientWidth - 10) + 'px'

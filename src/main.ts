@@ -7,7 +7,5 @@ app.use(Antd);
 app.mount("#app");
 if (window.isElectron) {
   const { ipcRenderer } = require("electron");
-  const { webFrame } = require("electron");
   window.ipcRenderer = ipcRenderer;
-  window.webFrame = webFrame;
 }

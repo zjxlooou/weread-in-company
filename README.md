@@ -8,6 +8,12 @@
 
 ---
 
+# 下载方式
+
+[点我下载](https://github.com/zjxlooou/weread-in-company/releases)
+
+---
+
 # 使用方法
 
 下载解压 → 打开 weread-in-company.exe
@@ -16,7 +22,7 @@
 
 最上面有一排六个按钮，功能分别是
 
-拖动窗口、刷新、调整透明度、置顶窗口、最小化窗口（后台运行、托盘里有图标）、关闭窗口
+拖动窗口、刷新、~~调整透明度~~ -> 设置、置顶窗口、最小化窗口（后台运行、托盘里有图标）、关闭窗口
 
 接下来你要做的是
 
@@ -24,12 +30,44 @@
 
 ---
 
+# 技术栈
+
+[Electron](https://github.com/electron/electron)
+
+[Vue.js 3.0](https://github.com/vuejs/docs-next-zh-cn)
+
+[UI: Ant Design of Vue](https://github.com/vueComponent/ant-design-vue)
+
+---
+
+# 我要开发
+
+- 开发
+  
+```
+npm i            -- 拉取依赖
+
+npm run dev      -- 运行 Vue
+
+npm run electron -- 运行 Electron
+```
+
+- 打包（只适配 Windows）
+  
+```
+npm run pack:pre -- 编译 Vue 项目并准备文件
+
+npm run pack:win -- 打包 Electron
+```
+
 # TODO
 
-✅增加老板键（默认 Ctrl+Alt+M，这功能真有用）
+✅~~增加老板键（默认 Ctrl+Alt+M，这功能真有用）~~
 
-编辑老板键（本来想让用户自己改配置的，想想还是弄个界面吧😂）
+✅~~编辑老板键（本来想让用户自己改配置的，想想还是弄个界面吧😂）~~
 
-老板键开关
+✅~~老板键开关~~
 
-更改主页链接（👴就不用微信读书，👴要看起点）
+✅~~更改主页链接（👴就不用微信读书，👴要看起点）~~
+
+好像没啥要做的了，就这样吧
