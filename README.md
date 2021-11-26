@@ -10,7 +10,7 @@
 
 # 下载方式
 
-[点我下载](https://github.com/zjxlooou/weread-in-company/releases)
+[点我下载，选择最新的版本，下载 weread-in-company.7z 这个文件](https://github.com/zjxlooou/weread-in-company/releases)
 
 ---
 
