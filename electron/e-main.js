@@ -11,7 +11,7 @@ const HOME_NAME = "home";
 const BOSS_KEY_NAME = "bossKey";
 const BOSS_KEY_SWITCH_NAME = "bossKeySwitch";
 
-const DEFAULT_HOME = "http://weread.qq.com/";
+const DEFAULT_HOME = "https://weread.qq.com/";
 const DEFAULT_BOSS_KEY = "Ctrl+Alt+M";
 const DEFAULT_BOSS_KEY_SWITCH = true;
 
