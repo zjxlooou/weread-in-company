@@ -66,19 +66,21 @@
 - 开发
   
 ```
-npm i            -- 拉取依赖
+npm i                   -- 拉取依赖
 
-npm run dev      -- 运行 Vue
+npm run dev             -- 运行 Vue
 
-npm run electron -- 运行 Electron
+cd ./electron && npm i  -- 拉取 Electron 相关依赖
+
+npm run electron        -- 运行 Electron
 ```
 
 - 打包（只适配 Windows）
   
 ```
-npm run pack:pre -- 编译 Vue 项目并准备文件
+npm run pack:pre        -- 编译 Vue 项目并准备文件
 
-npm run pack:win -- 打包 Electron
+npm run pack:win        -- 打包 Electron
 ```
 
 ---
