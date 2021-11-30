@@ -4,12 +4,13 @@
     <a-row ref="row">
       <!-- 在左边 -->
       <a-col :span="12" align="left">
+        <!-- 因为隐藏了标题栏，所以设置一个按钮以拖动窗口 -->
         <a-button type="text" style="-webkit-app-region: drag;">
           <template #icon>
             <DragOutlined :style="{ color: '#909399' }" />
           </template>
         </a-button>
-        <!-- 因为隐藏了标题栏，所以设置一个按钮以拖动窗口 -->
+        <!-- 刷新按钮 -->
         <a-button type="text" @click="reload">
           <template #icon>
             <ReloadOutlined :style="{ color: '#909399' }" />

@@ -1,6 +1,6 @@
 <template>
     <TopToolBar @change-home="loadUrl" />
-    <SubWebview ref="subWebview" :initSrcUrl="home" />
+    <SubWebview ref="subWebview" :initSrcUrl="home" :preloadPath="preloadFile" />
 </template>
 <script lang="ts">
 import TopToolBar from './TopToolBar.vue';
@@ -10,12 +10,13 @@ import { defineComponent } from 'vue';
 export default defineComponent({
     components: {
         TopToolBar,
-        SubWebview
+        SubWebview,
     },
     setup() {
         const home = window.homeUrl;
         return {
-            home
+            home,
+            preloadFile: window.webviewProloadPath
         };
     },
     methods: {

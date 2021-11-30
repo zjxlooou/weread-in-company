@@ -11,4 +11,5 @@ declare interface Window {
   isElectron: boolean;
   ipcRenderer: any;
   homeUrl: string;
+  webviewProloadPath: string
 }

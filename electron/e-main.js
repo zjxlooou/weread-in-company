@@ -2,6 +2,7 @@ const { info } = require('console');
 const { app, BrowserWindow, ipcMain, Tray, nativeImage, Menu, globalShortcut, dialog, shell } = require('electron');
 const Store = require('electron-store');
 const path = require('path');
+const webviewProloadPath = path.join(__dirname, 'webview-preload.js');
 
 global.APP_ENV = (process.env.NODE_ENV === 'dev') ? 'dev' : 'production';
 
@@ -83,7 +84,7 @@ function createWindow() {
         mainWindow.loadURL(`file://${__dirname}/index.html`);
     } else {
         mainWindow.loadURL('http://localhost:3000/');
-        // mainWindow.webContents.openDevTools(); // 打开开发工具
+        mainWindow.webContents.openDevTools(); // 打开开发工具
     }
 
     mainWindow.on("minimize", function () {
@@ -247,6 +248,10 @@ ipcMain.on("e-window-open-url", function (event, arg) {
 ipcMain.on("e-window-force-init", function (event) {
     initConfig(true);
     event.returnValue = 'ok';
+});
+
+ipcMain.on("e-window-get-webview-preload", function (event) {
+    event.returnValue = webviewProloadPath;
 });
 
 function windowMinimize() {
