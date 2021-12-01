@@ -2,7 +2,7 @@ const { ipcRenderer } = require("electron");
 // const webview = document.getElementById("webview");
 // webview.openDevTools();
 document.addEventListener('DOMContentLoaded', function () {
-    makeDraggableFallback(document.body);
+    // makeDraggableFallback(document.body);
 });
 function makeDraggableFallback(el) {
     // 方案一
@@ -10,31 +10,33 @@ function makeDraggableFallback(el) {
 
     // 方案二
     let dragging = false;
-    let mouseX = 0;
-    let mouseY = 0;
+    let clientXInit;
+    let clientYInit;
     el.addEventListener('mousedown', (e) => {
+        const { clientX, clientY } = e;
+        clientXInit = clientX;
+        clientYInit = clientY;
+        // ipcRenderer.sendToHost('record-window-size');
         dragging = true;
-        // const { pageX, pageY } = e;
-        mouseX = 0;
-        mouseY = 0;
     });
     el.addEventListener('mouseup', () => {
         dragging = false;
     });
+    el.addEventListener('mouseleave', () => {
+        dragging = false;
+    });
     el.addEventListener('mousemove', (e) => {
         if (dragging) {
-            const { pageX, pageY } = e;
-            if (mouseX === 0 && mouseY === 0) {
-                mouseX = pageX;
-                mouseY = pageY;
-                return;
-            }
-            let pos = [];
-            pos.push(pageX - mouseX);
-            pos.push(pageY - mouseY);
-            ipcRenderer.sendToHost('set-window-position', pos)
-            mouseX = pageX;
-            mouseY = pageY;
+            // console.log(e)
+            const { screenX, screenY } = e;
+            // let targetX = screenX - clientXInit;
+            // let targetY = screenY - clientYInit;
+            // let pos = [];
+            // pos.push(targetX);
+            // pos.push(targetY);
+            // window.moveTo(screenX - clientXInit, screenY - clientYInit); // 没用
+            // ipcRenderer.sendToHost('set-window-position', [screenX - clientXInit, screenY - clientYInit]);
+            // ipcRenderer.sendSync('e-window-set-position', [screenX - clientXInit, screenY - clientYInit]);
         }
     });
 }

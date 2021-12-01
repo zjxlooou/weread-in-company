@@ -34,6 +34,33 @@ function init() {
     initBossKey();
 }
 
+function createWindow() {
+    mainWindow = new BrowserWindow({
+        width: 860,
+        height: 640,
+        transparent: true, // 透明
+        frame: false, // 无边框
+        webPreferences: {
+            preload: path.join(__dirname, 'e-preload.js'),
+            nodeIntegration: true,
+            contextIsolation: false,
+            webSecurity: false,
+            webviewTag: true
+        }
+    });
+
+    if (APP_ENV === 'production') {
+        mainWindow.loadURL(`file://${__dirname}/index.html`);
+    } else {
+        mainWindow.loadURL('http://localhost:3000/');
+        mainWindow.webContents.openDevTools(); // 打开开发工具
+    }
+
+    mainWindow.on("minimize", function () {
+        mainWindow.setSkipTaskbar(true);
+    });
+}
+
 function initConfig(forceInit) {
     if (!forceInit) {
         currentHome = store.get(HOME_NAME);
@@ -63,33 +90,6 @@ function initConfig(forceInit) {
 function initBossKey() {
     registerBossKey(currentBossKey, currentBossKeySwitch, true);
 
-}
-
-function createWindow() {
-    mainWindow = new BrowserWindow({
-        width: 860,
-        height: 640,
-        transparent: true, // 透明
-        frame: false, // 无边框
-        webPreferences: {
-            preload: path.join(__dirname, 'e-preload.js'),
-            nodeIntegration: true,
-            contextIsolation: false,
-            webSecurity: false,
-            webviewTag: true
-        }
-    });
-
-    if (APP_ENV === 'production') {
-        mainWindow.loadURL(`file://${__dirname}/index.html`);
-    } else {
-        mainWindow.loadURL('http://localhost:3000/');
-        mainWindow.webContents.openDevTools(); // 打开开发工具
-    }
-
-    mainWindow.on("minimize", function () {
-        mainWindow.setSkipTaskbar(true);
-    });
 }
 
 function createTray() {
@@ -253,6 +253,13 @@ ipcMain.on("e-window-force-init", function (event) {
 ipcMain.on("e-window-get-webview-preload", function (event) {
     event.returnValue = webviewProloadPath;
 });
+
+// 会触发resize，然后窗口被变大，不知道原因，也不知道怎么结局，放弃
+// ipcMain.on("e-window-set-position", function (event, arg) {
+//     console.log(arg);
+//     mainWindow.setPosition(arg[0], arg[1]);
+//     event.returnValue = "ok";
+// });
 
 function windowMinimize() {
     mainWindow.setSkipTaskbar(true);

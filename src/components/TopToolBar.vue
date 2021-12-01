@@ -3,11 +3,11 @@
   <a-affix ref="affix" :style="style">
     <a-row ref="row">
       <!-- 在左边 -->
-      <a-col :span="12" align="left">
-        <!-- 因为隐藏了标题栏，所以设置一个按钮以拖动窗口 -->
-        <a-button type="text" style="-webkit-app-region: drag;">
+      <a-col :span="8" align="left">
+        <!-- 退后按钮 -->
+        <a-button type="text" @click="back">
           <template #icon>
-            <DragOutlined :style="{ color: '#909399' }" />
+            <ArrowLeftOutlined :style="{ color: '#909399' }" />
           </template>
         </a-button>
         <!-- 刷新按钮 -->
@@ -19,8 +19,16 @@
         <!-- 显示设置按钮 -->
         <setting-button />
       </a-col>
+      <!-- 横条，可以拖动窗口 -->
+      <a-col :span="8" align="center">
+        <a-button type="text" style="width: 100%; -webkit-app-region: drag;">
+          <template #icon>
+            <div :style="{ borderStyle: 'solid', borderRadius: '2px', borderColor: '#909399' }"></div>
+          </template>
+        </a-button>
+      </a-col>
       <!-- 在右边 -->
-      <a-col :span="12" align="right">
+      <a-col :span="8" align="right">
         <!-- 置顶窗口 -->
         <a-button type="text" @click="onTopWindow">
           <template #icon>
@@ -45,12 +53,12 @@
 </template>
 <script>
 import SettingButton from './SettingButton.vue';
-import { DragOutlined, ReloadOutlined, MinusOutlined, CloseOutlined, PushpinOutlined } from '@ant-design/icons-vue';
+import { ArrowLeftOutlined, ReloadOutlined, MinusOutlined, CloseOutlined, PushpinOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 
 export default {
   components: {
-    DragOutlined,
+    ArrowLeftOutlined,
     ReloadOutlined,
     MinusOutlined,
     CloseOutlined,
@@ -83,7 +91,12 @@ export default {
       window.ipcRenderer.send('e-window-minimize');
     },
     reload: function () {
-      location.reload();
+      const webview = document.getElementById("webview");
+      webview.reload();
+    },
+    back: function () {
+      const webview = document.getElementById("webview");
+      webview.goBack();
     }
   }
 }
