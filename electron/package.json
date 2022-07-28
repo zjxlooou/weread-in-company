@@ -9,9 +9,9 @@
       "output": "build-apps",
       "buildResources": "./"
     },
-    "electronVersion": "16.0.0"
+    "electronVersion": "19.0.10"
   },
   "dependencies": {
-    "electron-store": "^8.0.1"
+    "electron-store": "8.0.2"
   }
 }

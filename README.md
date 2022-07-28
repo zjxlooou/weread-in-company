@@ -72,21 +72,23 @@
 - 开发
   
 ```shell
-npm i                   # 拉取依赖
+npm i                     # 拉取依赖
 
-npm run dev             # 运行 Vue
+npm run dev               # 运行 Vue
 
-cd ./electron && npm i  # 拉取 Electron 相关依赖
+cd ./electron && npm i    # 拉取 Electron 相关依赖
 
-npm run electron        # 运行 Electron
+npm run electron          # 运行 Electron
 ```
 
 - 打包（只适配 Windows）
   
 ```shell
-npm run pack:pre        # 编译 Vue 项目并准备文件
+npm run pack:pre                      # 编译 Vue 项目并准备文件
 
-npm run pack:win        # 打包 Electron
+npm install @types/node --save-dev    # 如果打包 Vue 项目时遇到错误 Cannot find type definition file for 'node'.
+
+npm run pack:win                      # 打包 Electron
 ```
 
 ---
